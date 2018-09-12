@@ -14,6 +14,52 @@ Vue.use(clipper)
 #### 代码
 [upload文件夹](https://github.com/chentvtchen/jieyun-components/tree/master/components/)
 放在components文件夹下面
+#### 使用案例
+```
+<template>
+    <div class="demo">  
+        <button @click="uploadImg">图片上传</button>  
+        <upload ref="uploadRef" :config="config" @getImgData="getImg"></upload>
+    </div>
+</template>
+
+<script>
+import upload from 'components/upload/index.vue'
+export default {
+    name: 'app',
+    data(){
+        return {
+            config : {
+                isCrop : true,
+                cropBoxResizable:false,         //是否可以调整裁剪框的大小
+                minCropBoxWidth:144,            //裁剪层的最小宽度
+                minCropBoxHeight:192,           //裁剪层的最小高度
+                aspectRatioWidth : 144,          //裁剪框宽高比之宽度
+                aspectRatioHeight : 144,        //裁剪框宽高比之高度
+                maxUploadMb: 5,                 //上传到后台图片最大
+            },
+            info: {
+                id: '',
+                name: ''
+            }
+        }
+    },
+    components: {
+        upload
+    },
+    methods:{
+        uploadImg(){
+            this.$refs.uploadRef.uploadEvent();
+        },
+        getImg(info) {
+            this.info = info;
+            console.log(info);
+        }
+    },
+}
+</script>
+
+```
 ### 2.属性
 | 参数      | 说明    | 类型      | 可选值       | 默认值   |
 |---------- |-------- |---------- |-------------  |-------- |
