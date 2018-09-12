@@ -12,6 +12,7 @@ import clipper from 'components/upload/clipper.js'
 Vue.use(clipper)
 ```
 #### 代码
+[upload文件夹](https://github.com/chentvtchen/jieyun-components/tree/master/components/)
 放在components文件夹下面
 ### 2.属性
 | 参数      | 说明    | 类型      | 可选值       | 默认值   |
