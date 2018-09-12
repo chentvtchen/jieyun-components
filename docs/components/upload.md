@@ -13,7 +13,7 @@ Vue.use(clipper)
 ```
 #### 代码
 [upload文件夹](https://github.com/chentvtchen/jieyun-components/tree/master/components/)
-放在components文件夹下面
+  下载后放在全局的components文件夹下面
 #### 使用案例
 ```
 <template>
