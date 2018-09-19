@@ -12,7 +12,7 @@
                 <input type="checkbox" v-model="ifOriginImg">原图({{fileSize.num + fileSize.unit}})
             </div>
         </div>
-        <input type="file" ref="uploadFile" id="uploadFile" style="display:none" accept="image/*" @change="upload"/>
+        <input type="file" ref="uploadFile" class="upload-file" style="display:none;" accept="image/*" @change="upload"/>
 
         <popup v-model="popupVisible" popup-transition="popup-fade" position="bottom">
             <cell @click.native="byMobile()" style="color:#333;background:#fff;text-align:center;">
@@ -35,6 +35,7 @@ import {XHeader,  XButton , TransferDomDirective as TransferDom ,Popup,Cell,Grou
 import Cropper from 'cropperjs';
 import lrz from 'lrz';
 export default {
+    name: 'upload',
     data(){
         return{
             HostFileUpload: 'http://192.168.100.200:8888/file/',
@@ -61,13 +62,15 @@ export default {
     props:{
         config : {
             type : Object,
-            default : {
-                isCrop : false,
-                cropBoxResizable:false,         //是否可以调整裁剪框的大小
-                minCropBoxWidth:144,            //裁剪层的最小宽度
-                minCropBoxHeight:192,           //裁剪层的最小高度
-                aspectRatioWidth : 144,          //裁剪框宽高比之宽度
-                aspectRatioHeight : 192,        //裁剪框宽高比之高度
+            default() {
+                return {
+                    isCrop : false,
+                    cropBoxResizable:false,         //是否可以调整裁剪框的大小
+                    minCropBoxWidth:144,            //裁剪层的最小宽度
+                    minCropBoxHeight:192,           //裁剪层的最小高度
+                    aspectRatioWidth : 144,          //裁剪框宽高比之宽度
+                    aspectRatioHeight : 192,        //裁剪框宽高比之高度
+                }
             }
         },
         maxUploadMb: {                          //上传到后台图片最大mb
@@ -122,7 +125,9 @@ export default {
         uploadEvent(){
             this.$refs.uploadFile.value = null;
             if(this.isWechat){
-                document.getElementById("uploadFile").click();
+                console.log('点击');
+                this.$refs.uploadFile.click();
+                // document.getElementById("uploadFile").click();
             }else{
                 this.popupVisible = true;
             }
