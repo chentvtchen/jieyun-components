@@ -44,7 +44,7 @@ export default {
             panelVisible : false,
             url : '',
             postHeaderImg : '',
-            isWechat : constGlobal.isWeChat(),                     //判断是否是微信
+            isWechat : constGlobal.isWeChat ? constGlobal.isWeChat() : true,                     //判断是否是微信
             popupVisible : false,             //图片上传弹框是否显示
             isCancel : false,
             ifOriginImg: false,             //是否是原图
@@ -125,9 +125,7 @@ export default {
         uploadEvent(){
             this.$refs.uploadFile.value = null;
             if(this.isWechat){
-                console.log('点击');
                 this.$refs.uploadFile.click();
-                // document.getElementById("uploadFile").click();
             }else{
                 this.popupVisible = true;
             }
