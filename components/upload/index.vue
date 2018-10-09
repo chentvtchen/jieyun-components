@@ -13,6 +13,7 @@
             </div>
         </div>
         <input type="file" ref="uploadFile" class="upload-file" style="display:none;" accept="image/*" @change="upload"/>
+        <!-- <input type="file" ref="uploadFile" style="display:none" accept="image/*" @change="upload"/> -->
 
         <popup v-model="popupVisible" popup-transition="popup-fade" position="bottom">
             <cell @click.native="byMobile()" style="color:#333;background:#fff;text-align:center;">
@@ -126,6 +127,7 @@ export default {
             this.$refs.uploadFile.value = null;
             if(this.isWechat){
                 this.$refs.uploadFile.click();
+                // document.getElementById("uploadFile").click();
             }else{
                 this.popupVisible = true;
             }
@@ -221,7 +223,8 @@ export default {
                     heightRatio:this.config.aspectRatioHeight,
                 },
                 imgInfo = imageData.split('/');    
-            this.fileInfo.name = imgInfo[imgInfo.length - 1];
+            let name = imgInfo[imgInfo.length - 1];
+            this.fileInfo.name = name.indexOf("?")>=0 ? name.substring(0,name.indexOf("?")) : name;
             // 裁剪
             if(this.config.isCrop) {
                 plugins.crop( function success( url ){

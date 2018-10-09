@@ -1,10 +1,15 @@
 ###  1.使用
-####  依赖组件
+####  依赖包
 ```js
 "vux":
 "cropperjs": "^1.4.1",
 "lrz": "^4.9.40",
 "exif-js": "2.2.1"
+```
+cordova插件
+```js
+  "cordova-plugin-crop": "git+https://github.com/obeza/cordova-plugin-crop-with-ratio.git",
+        "cordova-plugin-camera": "^4.0.1",
 ```
 #### main.js 引入
 ```js
