@@ -4,4 +4,4 @@
 - 基础组件
  - [上传图片](/components/upload.md)
 - 通用功能
- - [上传图片](/components/upload.md)
+ - [日程](/components/schedule.md)
