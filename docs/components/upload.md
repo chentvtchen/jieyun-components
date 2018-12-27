@@ -71,6 +71,7 @@ export default {
 | maxUploadMb  | 上传到后台图片最大mb   | Number|  自定义  |     5    |
 | quality     | 压缩图片的质量 | String  | 自定义 |  0.8   |
 | themeColor| 主题色| String    | 自定义 |   #1aad19    |
+| uploadUrl | 上传服务器的路径| String    | 自定义 |   http://192.168.100.200:8888/file/    |
 | config  |  裁剪框的配置  | Object    |  自定义  |    下面有详解    |
 ##### config参数
 | 参数      | 说明    | 类型      | 可选值       | 默认值   |

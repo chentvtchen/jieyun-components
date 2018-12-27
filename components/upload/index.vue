@@ -61,6 +61,10 @@ export default {
         }
     },
     props:{
+        uploadUrl: {
+            type: String,
+            default: 'http://192.168.100.200:8888/file/upload'
+        },
         config : {
             type : Object,
             default() {
@@ -249,7 +253,7 @@ export default {
         */
         uploadImgApp( fileUrl){
             var _this = this;
-            var url = this.HostFileUpload + 'upload';
+            var url = this.uploadUrl;
                 
             var options = new FileUploadOptions();
             var name = fileUrl.substring( fileUrl.lastIndexOf('/')+1);
@@ -339,7 +343,7 @@ export default {
             let mb = this.fileSize.bNum / (1024 * 1024),
                 scale = (this.fileSize.bNum / size.toFixed(2)),         
                 max = this.maxUploadMb;
-            while(mb > max) {                       //把图片控制在一定范围之下，默认为5m     
+            if(mb > max) {                       //把图片控制在一定范围之下，默认为5m     
                 scale = (max / mb).toFixed(2);
             }
             return scale;
@@ -399,3 +403,4 @@ export default {
     }
 </style>
 
+ 
