@@ -57,6 +57,12 @@ var jpushStore = new Vuex.Store({
     state: {
         noReadNum: 0
     },
+    mutations: {
+        // 获取到未读消息的数量
+        getNoReadNum (state, res) {
+            state.noReadNum = res.num
+        }
+    }
 })
 window.$jpushStore = jpushStore
 ```
