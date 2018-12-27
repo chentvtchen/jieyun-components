@@ -52,18 +52,18 @@ Vue.use(InfiniteScroll)
 ###### 获取未读的数量，需要进行以下操作
 在config.js里面增加以下代码
 ```js
-var store = new Vuex.Store({
+var jpushStore = new Vuex.Store({
     state: {
         noReadNum: 0
     },
 })
-window.$store = store
+window.$jpushStore = jpushStore
 ```
 total变量
 ```js
     computed: {
         total() {
-            return $store.state.noReadNum
+            return $jpushStore.state.noReadNum
         }
     },
 ```
