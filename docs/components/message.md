@@ -13,6 +13,7 @@
         document.addEventListener("deviceready", lvJpush.initJpushEvent, false);
     }
 </script>
+```
 ###### 2. 参数配置
 constGlobal.js
 ```js
