@@ -44,6 +44,8 @@ Vue.use(InfiniteScroll)
 | $message_header_title_color |   消息通知选中的颜色  |  #181818 |
 | $message_header_default_color| 消息通知未选中的颜色 |   #454545 |
 | $message_header_info_color| 返回左箭头的颜色 |   #838383 |
+
+
 ###### 5. 集成底部菜单栏
 把底部菜单栏组件化后，放到message/pages/index.vue的103行，通过一个props参数:noReadNum="infoTotal + messageTotal"传参到底部组件获取到未读的数量
 ![image.png](https://upload-images.jianshu.io/upload_images/2216204-58ea4c3a56961d14.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
