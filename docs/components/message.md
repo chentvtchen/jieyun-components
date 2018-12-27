@@ -3,6 +3,7 @@
 * 把jpushEvent.js放到assets/js/文件夹下面
 * 把message文件夹放到apps下, outer的默认列表为message.html#/messageList
 * 每一个文件夹下面的index.art都加上下面一段话,用作初始化initJpushEvent服务
+* 在jpushEvent.js文件里面的第二行appName写上自己的包名
 ```js
 <body onload="onLoad()">
     <div id="app"></div>
@@ -68,21 +69,17 @@ total变量
 ```
 mounted里面调用函数
 ```js
+    mounted: {
         lvJpush.getNum()
+    },
 ```
 ####  API相关
 1. 登陆登出调用后台接口
 ```js
-//APP登录登出记录
-constGlobal.HostMessage + '/registerStatus/update'
-method: POST
-param:
-{
-	"appName":"你的包名",
-	"deviceId": (device.uuid ? device.uuid : ''),
-	"deviceName"(device.manufacturer ? device.manufacturer : ''), 
-	"status":0 // 0登出 1 登录
-}
+//在登录成功的接口调用
+lvJPush.loginLog()
+//在登出成功的接口调用
+lvJPush.logoutLog()
 ```
 2. 阅读全部的业务处理
 message/page/index里面的`handleReadAll`方法
