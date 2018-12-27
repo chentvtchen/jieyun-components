@@ -62,6 +62,12 @@ var jpushStore = new Vuex.Store({
         getNoReadNum (state, res) {
             state.noReadNum = res.num
         }
+    },
+    actions: {
+        // 获取到未读消息的数量
+        getNoReadNum (context, res) {
+            context.commit('getNoReadNum', res)
+        }
     }
 })
 window.$jpushStore = jpushStore
