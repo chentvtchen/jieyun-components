@@ -47,75 +47,28 @@ Vue.use(InfiniteScroll)
 
 
 ###### 5. 集成底部菜单栏
-把底部菜单栏组件化后，放到message/pages/index.vue的103行，通过一个props参数:noReadNum="infoTotal + messageTotal"传参到底部组件获取到未读的数量
-![image.png](https://upload-images.jianshu.io/upload_images/2216204-58ea4c3a56961d14.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
-###### 如果要在底部菜单栏显示及时更新的未读数量，在底部菜单栏中按照下面的操作方法
-在computed里面声明一个total，然后显示未读数量就用这个total变量
+把底部菜单栏组件化后，放到message/pages/index.vue的底部注释下面
+###### 获取未读的数量，需要进行以下操作
+在config.js里面增加以下代码
+```js
+var store = new Vuex.Store({
+    state: {
+        noReadNum: 0
+    },
+})
+window.$store = store
+```
+total变量
 ```js
     computed: {
         total() {
-            let path = this.$route.path;
-            return (path === '/messageList')  ? this.noReadNum : this.getTotal
+            return $store.state.noReadNum
         }
     },
 ```
 mounted里面调用函数
 ```js
-        this.getNum()
-        // 监听消息推送
-        document.addEventListener('jpush.receiveNotification', this.getNewInfo, false)
-```
-methods里面增加以下函数
-```js
-        // 获取到新消息处理
-        getNewInfo() {
-            let path = this.$route.path;
-            // 不是消息列表页面，获取新消息
-            if(path !== '/messageList') this.getNum()
-        },
-        // 获取所有数据
-        getNum() {
-            Promise.all([this.getInfoNum(), this.getMessNum()]).then(res => {
-                let total = 0
-                res.forEach((item, index) => {
-                    total += item
-                })
-                this.getTotal = total
-                this.initFlag = true
-            })
-        },
-        // 获取通知未读消息的数量
-        getInfoNum() {
-            return new Promise((resolve, reject) => {
-                http.apiPost(constGlobal.HostMessage + 'unClick/search', {
-                    type: '1'
-                }).then( res=>{
-                    if( res.status == 0){
-                        resolve(res.data)
-                    }else{
-                        reject()
-                        common.toastMsg( res.message )
-                    }
-                });
-            })
-        },
-        // 获取通知未读消息的数量
-        getMessNum() {
-            return new Promise((resolve, reject) => {
-                http.apiGet(constGlobal.HostMessage + 'unRead/count?type=2').then( res=>{
-                    if( res.status == 0){
-                        let count = 0;
-                        res.data.forEach((item, index) => {
-                            count += item.count
-                        })
-                        resolve(count)
-                    }else{
-                        reject()
-                        common.toastMsg( res.message )
-                    }
-                });
-            })
-        }
+        lvJpush.getNum()
 ```
 ####  API相关
 1. 登陆登出调用后台接口
