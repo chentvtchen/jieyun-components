@@ -22,7 +22,7 @@ HostMessage: 'http://192.168.100.201:9823/message/app/',
 ```
 devConstGlobal.js
 ```js
-HostMessage: 'http://192.168.100.200:8888/message/app/', 
+HostMessage: 'http://192.168.108.11:9823/message/app/', 
 ```
 在config文件里面
 ```js
