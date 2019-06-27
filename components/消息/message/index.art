@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <% include('../../assets/art/meta.art') %>
+    <% include('../../assets/art/dll.art') %>
+    <script src=static/js/common.js></script>
+    <title></title>
+</head>
+<body onload="onLoad()">
+    <div id="app"></div>
+</body>
+<script src=static/js/pages/portal.js></script>
+<script>
+    function onLoad() {
+        document.addEventListener("deviceready", onDeviceReady, false);
+    }
+    /**
+     * APP中设备加载完成
+    */
+    function onDeviceReady() {
+        lvJpush.initJpushEvent();
+    }
+</script>
+</html>
